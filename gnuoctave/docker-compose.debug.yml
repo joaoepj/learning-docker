@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gnuoctave:
+    image: gnuoctave
+    build:
+      context: .
+      dockerfile: ./Dockerfile
