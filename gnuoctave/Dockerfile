@@ -5,5 +5,5 @@ RUN apt-get -y update && apt-get install -y qtbase5-dev qt5-qmake
 WORKDIR /home
 COPY hello.m .
 RUN ls /home
-#ENTRYPOINT [ "" ]
-CMD ["sh", "-c", "octave-cli"]
+#ENTRYPOINT [ "/bin/bash" ]
+#CMD ["sh", "-c", "/bin/bash"]

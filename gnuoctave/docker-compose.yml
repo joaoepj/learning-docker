@@ -2,7 +2,15 @@ version: '3.4'
 
 services:
   gnuoctave:
-    image: gnuoctave
+    image: joao/gnuoctave
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
     build:
       context: .
       dockerfile: ./Dockerfile

@@ -3,6 +3,36 @@
 This file is a log about Docker CLI commands. It is organized with the most advanced subject at the top. It is meant to be read botton up when one is a beginner and rapidly remember advanced topics as you became more confident.
 
 * ## Usefuls Tricks
+
+#### Enforcing CPU and Memory limits for a container
+
+Add constrains under service context
+
+`
+service:
+  image: nginx
+  mem_limit: 512m
+  mem_reservation: 128M
+  cpus: 0.5
+`
+or for version 3 and above
+
+`
+    deploy:
+        resources:
+            limits:
+              cpus: 0.50
+              memory: 512M
+            reservations:
+              cpus: 0.25
+              memory: 128M
+`
+
+WELL, IT DOESN'T WORK
+
+Check docker statistics to monitor container's behaviour
+> docker stats
+
 #### Filter the output by container's name
 > docker ps -f name=jenkins
 
