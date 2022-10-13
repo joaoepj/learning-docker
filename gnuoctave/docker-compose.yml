@@ -3,6 +3,9 @@ version: '3.4'
 services:
   gnuoctave:
     image: joao/gnuoctave
+    volumes:
+      - octave_home:/home
+    user: jovyan
     deploy:
       resources:
         limits:
@@ -14,3 +17,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+
+volumes:
+  octave_home:
