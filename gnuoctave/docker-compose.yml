@@ -6,14 +6,15 @@ services:
     volumes:
       - octave_home:/home
     user: jovyan
-    deploy:
-      resources:
-        limits:
-          cpus: "0.50"
-          memory: 512M
-        reservations:
-          cpus: "0.25"
-          memory: 128M
+    # only suppoerted in docker swarm
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: "0.50"
+    #      memory: 512M
+    #    reservations:
+    #      cpus: "0.25"
+    #      memory: 128M
     build:
       context: .
       dockerfile: ./Dockerfile

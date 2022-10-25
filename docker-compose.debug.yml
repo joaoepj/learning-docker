@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  learningdocker:
+    image: learningdocker
+    build:
+      context: .
+      dockerfile: ./Dockerfile

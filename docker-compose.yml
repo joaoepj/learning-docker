@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  go-httpd:
+    image: joao/docker-proj:0.0.1
+    build:
+      context: .
+      dockerfile: ./docker-proj/Dockerfile
+    networks:
+      - traefik_network
+    ports:
+      - 3030:3000
+  octave:
+    image: joao/gnuoctave
+    volumes:
+      - octave_home:/home
+    user: jovyan
+    build:
+      context: .
+      dockerfile: ./gnuoctave/Dockerfile
+    networks:
+      - traefik_network
+
+volumes:
+  octave_home:
+    external: true
+
+networks:
+  traefik_network:
+    external: true
