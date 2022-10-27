@@ -2,7 +2,10 @@ version: '3.4'
 
 services:
   go-httpd:
+    container_name: ld-frontend
     image: joao/docker-proj:0.0.1
+    volumes:
+      - octave_home:/home    
     build:
       context: .
       dockerfile: ./docker-proj/Dockerfile
@@ -11,6 +14,7 @@ services:
     ports:
       - 3030:3000
   octave:
+    container_name: ld-octave
     image: joao/gnuoctave
     volumes:
       - octave_home:/home

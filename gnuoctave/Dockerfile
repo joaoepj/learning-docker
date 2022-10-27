@@ -6,4 +6,4 @@ RUN apt-get -y update && apt-get install -y qtbase5-dev qt5-qmake
 WORKDIR /home
 COPY app/hello.m .
 RUN ls /home
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
