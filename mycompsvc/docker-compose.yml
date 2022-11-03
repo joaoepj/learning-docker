@@ -26,10 +26,17 @@ services:
 #       - traefik_network
   database:
     container_name: ld-mysql
-    image: mysql:8.0.31
+    build: 
+      context: .
+      dockerfile: ./mysql/Dockerfile
     environment:
-      MYSQL_ROOT_PASSWORD: helloworld
+      MYSQL_ROOT_PASSWORD: d0ck3r
       MYSQL_DATABASE: testapp
+    depends_on:
+      - dashboard
+    volumes:
+      - mycompsvc_db:/var/lib/mysql:rw
+      - ./mycompsvc_home/opensergo-dashboard/opensergo-dashboard-server/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     ports:
       - "3306:3306"
     networks:
@@ -37,8 +44,10 @@ services:
 
 volumes:
   mycompsvc_home:
-     external: true
-
+    
+  mycompsvc_db:
+    
+  
 networks:
   traefik_network:
     external: true
