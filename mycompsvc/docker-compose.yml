@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  dashboard:
+    container_name: opensergo
+    image: joao/opensergo-dashboard
+    volumes:
+      - mycompsvc_home:/home    
+    build:
+      context: .
+      dockerfile: ./opensergo-dashboard/Dockerfile
+    networks:
+      - traefik_network
+    ports:
+      - 3210:8080
+# kitex:
+#     container_name: ld-kitex
+#     image: joao/kitex
+#     volumes:
+#       - mycompsvc_home:/home
+#     user: jovyan
+#     build:
+#       context: .
+#       dockerfile: ./kitex/Dockerfile
+#     networks:
+#       - traefik_network
+  database:
+    container_name: ld-mysql
+    image: mysql:8.0.31
+    environment:
+      MYSQL_ROOT_PASSWORD: helloworld
+      MYSQL_DATABASE: testapp
+    ports:
+      - "3306:3306"
+    networks:
+      - traefik_network
+
+volumes:
+  mycompsvc_home:
+     external: true
+
+networks:
+  traefik_network:
+    external: true
