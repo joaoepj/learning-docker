@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  joao-test:
+    image: joao/docker-proj:0.0.1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - traefik_network
+    ports:
+      - 3030:3000
+
+networks:
+  traefik_network:
+    external: true
