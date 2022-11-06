@@ -2,6 +2,20 @@
 
 This file is a log about Docker CLI commands. It is organized with the most advanced subject at the top. It is meant to be read botton up when one is a beginner and rapidly remember advanced topics as you became more confident.
 
+* ## Doubts
+
+#### How to keep the container running?
+
+
+
+#### .env, ARG, VAR, whats the difference?
+
+Here is a nice [article](https://vsupalov.com/docker-arg-env-variable-guide/) to answer that question. Chech it out! 
+
+#### What is a build contexts?
+
+One of the appealing benefits of using containers is the accelerated speed that fixes and features can be moved from dev to prod environments. Is happens that to take full advantage of this benefits you should design your enviorments accordingly ...
+
 * ## Usefuls Tricks
 
 #### Enforcing CPU and Memory limits for a container
