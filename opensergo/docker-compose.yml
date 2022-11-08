@@ -2,12 +2,12 @@ version: '3.4'
 
 services:
   dashboard:
-    container_name: opensergo-dashboard
-    image: joao/opensergo-dashboard
+    container_name: ${PROJ_NAME}-dashboard
+    image: ${IMG_PREFIX}/opensergo-dashboard
     volumes:
       - mycompsvc_home:/home    
     build:
-      context: .
+      context: https://github.com/opensergo/opensergo-dashboard.git#main
       dockerfile: ./dashboard/Dockerfile
     networks:
       - traefik_network
@@ -15,7 +15,7 @@ services:
       - 3210:8080
 # kitex:
 #     container_name: ld-kitex
-#     image: joao/kitex
+#     image: ${IMG_PREFIX}/kitex
 #     volumes:
 #       - mycompsvc_home:/home
 #     user: jovyan
@@ -25,14 +25,14 @@ services:
 #     networks:
 #       - traefik_network
   database:
-    container_name: opensergo-database
-    image: joao/opensergo-database
+    container_name: ${PROJ_NAME}-database
+    image: ${IMG_PREFIX}/${PROJ_NAME}-database
     build: 
       context: .
       dockerfile: ./database/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: d0ck3r
-      MYSQL_DATABASE: opensergo
+      MYSQL_DATABASE: ${PROJ_NAME}
     depends_on:
       - dashboard
     volumes:
