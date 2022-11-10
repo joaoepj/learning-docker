@@ -3,16 +3,33 @@ version: '3.4'
 services:
   dashboard:
     container_name: ${PROJ_NAME}-dashboard
-    image: ${IMG_PREFIX}/opensergo-dashboard
-    volumes:
-      - mycompsvc_home:/home    
+    command: java -jar opensergo-dashboard-server/target/opensergo-dashboard.jar
+    image: ${IMG_PREFIX}/${PROJ_NAME}-dashboard
+    # volumes:
+    #   - opensergo-dashboard_home:/home    
     build:
-      context: https://github.com/opensergo/opensergo-dashboard.git#main
-      dockerfile: ./dashboard/Dockerfile
+#      context: https://github.com/opensergo/opensergo-dashboard.git#main
+      context: /home/opensergo-dashboard/
+#      dockerfile: ./dashboard/Dockerfile
+    depends_on:
+      - database
     networks:
       - traefik_network
     ports:
       - 3210:8080
+#   control-plane:
+#     container_name: ${PROJ_NAME}-control-plane
+#     image: ${IMG_PREFIX}/${PROJ_NAME}-control-plane
+#     volumes:
+#       - ${PROJ_NAME}-control-plane_home:/home    
+#     build:
+#       context: https://github.com/opensergo/opensergo-control-plane.git#main
+# #      dockerfile: ./dashboard/Dockerfile
+#     networks:
+#       - traefik_network
+#     ports:
+#       - 3211:8080
+
 # kitex:
 #     container_name: ld-kitex
 #     image: ${IMG_PREFIX}/kitex
@@ -27,26 +44,30 @@ services:
   database:
     container_name: ${PROJ_NAME}-database
     image: ${IMG_PREFIX}/${PROJ_NAME}-database
+    hostname: ${PROJ_NAME}-database
     build: 
       context: .
       dockerfile: ./database/Dockerfile
     environment:
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'opensergo'
       MYSQL_ROOT_PASSWORD: d0ck3r
       MYSQL_DATABASE: ${PROJ_NAME}
-    depends_on:
-      - dashboard
+    # depends_on:
+    #   - dashboard
     volumes:
-      - mycompsvc_db:/var/lib/mysql:rw
-      - mycompsvc_home:/home
-      - ./mycompsvc_home/opensergo-dashboard/opensergo-dashboard-server/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - opensergo-database_db:/var/lib/mysql:rw
+      - opensergo-dashboard_home:/home
+      - ./opensergo-dashboard_home/opensergo-dashboard/opensergo-dashboard-server/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     ports:
       - "3306:3306"
     networks:
       - traefik_network
 
 volumes:
-  mycompsvc_home:
-  mycompsvc_db:
+  opensergo-dashboard_home:
+  opensergo-control-plane_home:
+  opensergo-database_db:
     
   
 networks:

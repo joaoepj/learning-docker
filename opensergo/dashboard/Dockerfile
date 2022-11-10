@@ -5,6 +5,7 @@ ENV PACKAGES="\
     g++ \
     jq \
     py-pip \
+    mysql-client \
     "
 ENV DATABASE_HOST="localhost"
 
@@ -17,6 +18,7 @@ RUN set -o pipefail \
 WORKDIR /home/opensergo-dashboard
 COPY . .
 RUN yq -i -y ' \
+    .string.datasource.url = "jdbc:mysql://opensergo-database:3306/opensergo?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai" |\
     .spring.datasource.password = "d0cker" \
     ' opensergo-dashboard-server/src/main/resources/application.yaml
 RUN mvn clean package -D maven.test.skip=true && \
