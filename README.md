@@ -2,6 +2,61 @@
 
 This file is a log about Docker CLI commands. It is organized with the most advanced subject at the top. It is meant to be read botton up when one is a beginner and rapidly remember advanced topics as you became more confident.
 
+* ## Doubts
+
+#### How to keep the container running?
+
+
+
+#### .env, ARG, VAR, whats the difference?
+
+Here is a nice [article](https://vsupalov.com/docker-arg-env-variable-guide/) to answer that question. Chech it out! 
+
+#### What is a build contexts?
+
+One of the appealing benefits of using containers is the accelerated speed that fixes and features can be moved from dev to prod environments. Is happens that to take full advantage of this benefits you should design your enviorments accordingly ...
+
+docker build -t joao/docker-proj https://github.com/joaoepj/learning-docker.git#:docker-proj
+
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard https://github.com/joaoepj/learning-go.gi
+t
+unable to prepare context: unable to 'git clone' to temporary context directory: error fetching: fatal: couldn't find remote ref master
+: exit status 128
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard https://github.com/opensergo/opensergo-dashboard.git#master
+unable to prepare context: unable to 'git clone' to temporary context directory: error fetching: fatal: couldn't find remote ref master
+: exit status 128
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard https://github.com/opensergo/opensergo-dashboard.git#v0.0.3
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /tmp/docker-build-git416582543/Dockerfile: no such file or directory
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard -f . https://github.com/opensergo/openser
+go-dashboard.git#v0.0.3
+Sending build context to Docker daemon  5.474MB
+Error response from daemon: unexpected error reading Dockerfile: read /var/lib/docker/tmp/docker-builder891977508: is a directory
+dev-joao:/home/learning-docker/opensergo/dashboard # ls
+Dockerfile
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard -f Dockerfile https://github.com/openserg
+o/opensergo-dashboard.git#v0.0.3
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /tmp/docker-build-git561705133/Dockerfile: no such file or directory
+-------
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard  -f . https://github.com/opensergo/opense
+rgo-dashboard
+Downloading build context from remote url: https://github.com/opensergo/opensergo-dashboard  192.9kB
+Sending build context to Docker daemon  194.6kB
+Error response from daemon: dockerfile parse error line 8: unknown instruction: <!DOCTYPE
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard  -f Dockerfile https://github.com/openser
+go/opensergo-dashboard
+Downloading build context from remote url: https://github.com/opensergo/opensergo-dashboard  192.9kB
+Sending build context to Docker daemon  194.6kB
+Error response from daemon: dockerfile parse error line 8: unknown instruction: <!DOCTYPE
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard  https://github.com/opensergo/opensergo-d
+ashboard.git#main
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /tmp/docker-build-git009332291/Dockerfile: no such file or directory
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard -f Dockerfile https://github.com/openserg
+o/opensergo-dashboard.git#main
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /tmp/docker-build-git971331789/Dockerfile: no such file or directory
+dev-joao:/home/learning-docker/opensergo/dashboard # docker build -t joao/opensergo-dashboard https://github.com/opensergo/opensergo-da
+shboard.git#main -f Dockerfile 
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /tmp/docker-build-git606506385/Dockerfile: no such file or directory
+
 * ## Usefuls Tricks
 
 #### Enforcing CPU and Memory limits for a container
