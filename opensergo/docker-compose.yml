@@ -46,8 +46,8 @@ services:
     image: ${IMG_PREFIX}/${PROJ_NAME}-database
     hostname: ${PROJ_NAME}-database
     build: 
-      context: .
-      dockerfile: ./database/Dockerfile
+      context: ./database
+      # dockerfile: ./database/Dockerfile
     environment:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'opensergo'
@@ -57,8 +57,8 @@ services:
     #   - dashboard
     volumes:
       - opensergo-database_db:/var/lib/mysql:rw
-      - opensergo-dashboard_home:/home
-      - ./opensergo-dashboard_home/opensergo-dashboard/opensergo-dashboard-server/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      # - opensergo-dashboard_home:/home
+      - ./database:/docker-entrypoint-initdb.d/
     ports:
       - "3306:3306"
     networks:

@@ -19,7 +19,8 @@ WORKDIR /home/opensergo-dashboard
 COPY . .
 RUN yq -i -y ' \
     .string.datasource.url = "jdbc:mysql://opensergo-database:3306/opensergo?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai" |\
-    .spring.datasource.password = "d0cker" \
+    .spring.datasource.username = "user" |\
+    .spring.datasource.password = "opensergo" \
     ' opensergo-dashboard-server/src/main/resources/application.yaml
 RUN mvn clean package -D maven.test.skip=true && \
     cd opensergo-dashboard-server/target 
