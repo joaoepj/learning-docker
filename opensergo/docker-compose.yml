@@ -16,7 +16,7 @@ services:
     networks:
       - traefik_network
     ports:
-      - 3210:8080
+      - 8123:8080
 #   control-plane:
 #     container_name: ${PROJ_NAME}-control-plane
 #     image: ${IMG_PREFIX}/${PROJ_NAME}-control-plane
@@ -43,11 +43,12 @@ services:
 #       - traefik_network
   database:
     container_name: ${PROJ_NAME}-database
+    command: [ "--default-authentication-plugin=mysql_native_password" ]
     image: ${IMG_PREFIX}/${PROJ_NAME}-database
     hostname: ${PROJ_NAME}-database
     build: 
       context: ./database
-      # dockerfile: ./database/Dockerfile
+      #dockerfile: ./database/mysql.Dockerfile
     environment:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'opensergo'
