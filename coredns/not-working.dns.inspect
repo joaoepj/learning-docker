@@ -1,0 +1,259 @@
+[
+    {
+        "Id": "32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf",
+        "Created": "2023-01-15T19:06:33.410327815Z",
+        "Path": "/coredns",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 31423,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2023-01-15T19:06:33.958002408Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a81c2ec4e946de3f8baa403be700db69454b42b50ab2cd17731f80065c62d42d",
+        "ResolvConfPath": "/var/lib/docker/containers/32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf/hostname",
+        "HostsPath": "/var/lib/docker/containers/32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf/hosts",
+        "LogPath": "/var/lib/docker/containers/32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf/32cf0809cb991717fc5f55b30834995f26b97035288cc8beab598c4e0c3bfedf-json.log",
+        "Name": "/coredns",
+        "RestartCount": 0,
+        "Driver": "btrfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/home/learning-docker/dns/config:/etc/coredns:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-file": "5",
+                    "max-size": "10m"
+                }
+            },
+            "NetworkMode": "traefik_network",
+            "PortBindings": {
+                "3233/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": ""
+                    }
+                ],
+                "53/udp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "53"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "btrfs"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/learning-docker/dns/config",
+                "Destination": "/etc/coredns",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "32cf0809cb99",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "3233/tcp": {},
+                "53/tcp": {},
+                "53/udp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": null,
+            "Image": "coredns/coredns:1.9.4",
+            "Volumes": {
+                "/etc/coredns": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/coredns"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "68265ec319f74f46c01c4d3c4135711f76eaf52344dbd124243426bdc22c6723",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "dns",
+                "com.docker.compose.project.config_files": "docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/learning-docker/dns",
+                "com.docker.compose.service": "coredns",
+                "com.docker.compose.version": "1.25.1"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "80a12b46dc7ed3fd735d6a911297f857718c5121fdcb9d51cdb65eaf5ce763ba",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "3233/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "49165"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "49165"
+                    }
+                ],
+                "53/tcp": null,
+                "53/udp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "53"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "53"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/80a12b46dc7e",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "traefik_network": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "32cf0809cb99",
+                        "coredns"
+                    ],
+                    "NetworkID": "71045f72691db8cded16890b49c61f414933c54bef42bbe511c1ea2322654e47",
+                    "EndpointID": "bd3abc3b83e2c5029b404fb1b8a6d032606b3aee26bdf15901ff52917274e659",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    command: --init-file /data/application/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: coredns
+      MYSQL_USER: coredns
+      MYSQL_PASSWORD: changeme
+    logging:
+      driver: syslog
+      options:
+        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+    networks:
+      - traefik_network
+    restart: on-failure
+    volumes:
+      - ${PWD}/mariadb:/var/lib/mysql
+      - ./init.sql:/data/application/init.sql
+    ports:
+      - 3306:3306
+
+networks:
+  traefik_network:
+    external: true

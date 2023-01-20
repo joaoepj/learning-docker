@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  coredns:
+    container_name: coredns
+    command: -conf /etc/coredns/Corefile
+    restart: always
+    image: coredns/coredns:1.9.4
+    volumes:
+      - /home/learning-docker/coredns/config:/etc/coredns    
+    networks:
+      - traefik_network
+    ports:
+      - 53:53
+      - 53:53/udp
+
+#volumes:
+#  octave_home:
+#    external: true
+
+networks:
+  traefik_network:
+    external: true
