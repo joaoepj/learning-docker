@@ -5,7 +5,10 @@ services:
     container_name: coredns
     command: -conf /etc/coredns/Corefile
     restart: always
-    image: coredns/coredns:1.9.4
+    image: joao/coredns:1.9.4
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
     volumes:
       - /home/learning-docker/coredns/config:/etc/coredns    
     networks:

@@ -1,14 +1,22 @@
-.:53 {
-    forward . 8.8.8.8
-    log
-    errors
-}
-
 example.com:53 {
     file /etc/coredns/example.db
     log
     errors
 }
 
+example.org:53 {
+    mysql {
+        dsn root:changeme@tcp(172.18.0.3:3306)/coredns
+    }
+    log
+    errors
+}
 
-example.or
+ufu.br:53 {
+    mysql {
+        dsn root:changeme@tcp(172.18.0.3:3306)/coredns
+    }
+    log
+    errors
+}
+

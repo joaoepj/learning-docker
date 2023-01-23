@@ -1,0 +1,11 @@
+mariadb/aria_log.00000001
+mariadb/aria_log_control
+mariadb/coredns/
+mariadb/ib_buffer_pool
+mariadb/ib_logfile0
+mariadb/ibdata1
+mariadb/ibtmp1
+mariadb/multi-master.info
+mariadb/mysql/
+mariadb/mysql_upgrade_info
+mariadb/performance_schema/
