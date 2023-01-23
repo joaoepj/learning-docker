@@ -9,3 +9,4 @@ mariadb/multi-master.info
 mariadb/mysql/
 mariadb/mysql_upgrade_info
 mariadb/performance_schema/
+mariadb/mariadb
