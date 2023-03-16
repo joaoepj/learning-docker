@@ -1,3 +1,9 @@
+ufu.br:53 {
+    forward . 200.19.146.201
+    log 
+    errors
+}
+
 example.com:53 {
     file /etc/coredns/example.db
     log
@@ -6,17 +12,23 @@ example.com:53 {
 
 example.org:53 {
     mysql {
-        dsn root:changeme@tcp(172.18.0.3:3306)/coredns
+        dsn coredns:changeme@tcp(mariadb:3306)/coredns
     }
     log
     errors
 }
 
-ufu.br:53 {
-    mysql {
-        dsn root:changeme@tcp(172.18.0.3:3306)/coredns
-    }
-    log
+
+#domain.teste:53 {
+#    mysql {
+#        dsn coredns:changeme@tcp(mariadb:3306)/coredns
+#    }
+#    log
+#    errors
+#}
+
+. {
+    forward . /etc/resolv.conf
+    log 
     errors
 }
-
