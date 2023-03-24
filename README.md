@@ -144,3 +144,14 @@ or
 #### Create jenkins container
 > docker run   --name jenkins-blueocean   --restart=on-failure   --detach   --network traefik_network   --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client   --env DOCKER_TLS_VERIFY=1   --publish 8080:8080   --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   joao/myjenkins-blueocean:2.368
 
+#### Going to swarm
+
+dev-joao:~ # docker swarm init
+Swarm initialized: current node (8bztrt6v1dy5k0dzhph7u4np1) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-123wprxumve1ijzhrd9aqb6ifuz29mqj165iefp2iztvw4sz90-7lep64j9mvr4x7fjilk9h3nrz dev-joao:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
