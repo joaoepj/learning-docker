@@ -1,5 +1,5 @@
 ufu.br:53 {
-    forward . 200.19.146.201
+    forward ufu.br 200.19.146.201 200.19.146.200
     log 
     errors
 }
@@ -28,7 +28,10 @@ example.org:53 {
 #}
 
 . {
-    forward . /etc/resolv.conf
+    forward . /etc/resolv.conf 8.8.8.8
     log 
-    errors
+    errors {
+        consolidate 30s "i/o timeout" warning
+        #consolidate 30s "^Failed to .+"
+    }
 }
