@@ -12,15 +12,20 @@ services:
     volumes:
       - /home/learning-docker/coredns/config:/etc/coredns    
     networks:
-      - traefik_network
+      -  devnet
     ports:
       - 53:53
       - 53:53/udp
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://graylog_graylog_1:12201"
+        tag: "first-logs"
 
 #volumes:
 #  octave_home:
 #    external: true
 
 networks:
-  traefik_network:
+   devnet:
     external: true
