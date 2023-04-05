@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  kea-dhcpd:
+    container_name: kea-dhcpd
+    command: kea-admin db-init mysql -u root -p kea_db_pass  -h db -n kea 
+    image: rkojedzinszky/kea:2.2.0
+    
+    networks:
+      - devnet
+    ports:
+      - 67:67/udp
+
+
+networks:
+  devnet:
+    external: true
