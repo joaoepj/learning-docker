@@ -2,30 +2,18 @@ version: '3.4'
 
 services:
   coredns:
-    container_name: coredns
-    command: -conf /etc/coredns/Corefile
-    restart: always
-    image: joao/coredns:1.9.4
-#    build:
-#      context: .
-#      dockerfile: ./Dockerfile
-    volumes:
-      - /home/learning-docker/coredns/config:/etc/coredns    
+    container_name: ufu-coredns
+    image: joao/coredns:1.10.1
     networks:
-      -  devnet
+      - devnet
     ports:
       - 53:53
       - 53:53/udp
-    logging:
-      driver: "gelf"
-      options:
-        gelf-address: "udp://graylog_graylog_1:12201"
-        tag: "first-logs"
 
-#volumes:
-#  octave_home:
-#    external: true
+    volumes:
+      - /home/learning-docker/coredns/config:/etc/coredns
+
 
 networks:
-   devnet:
+  devnet:
     external: true

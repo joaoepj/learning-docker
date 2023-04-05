@@ -1,9 +1,11 @@
-FROM coredns/coredns:1.9.4
+# clone coredns repo to docker host
+# enable zones on database
+# compile coredns server and copy to image at build
+# mount configuration with docker compose
+FROM debian:stable-slim
 LABEL Name=joao/coredns Version=0.0.1
-WORKDIR .
-RUN sudo cat /coredns/plugin.cfg
-#RUN apt-get install dash
-#RUN sudo ln -s dash /bin/sh
 #RUN echo "mysql:github.com/cloud66-oss/coredns_mysql" >> plugin.cfg
 #RUN go generate && go build
-#ENTRYPOINT [ "/coredns" ]
+COPY coredns /coredns
+EXPOSE 53 53/udp
+ENTRYPOINT [ "/coredns" ]
