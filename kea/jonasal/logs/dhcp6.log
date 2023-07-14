@@ -1,0 +1,17 @@
+2023-07-13 14:55:05.711 INFO  [kea-dhcp6.hosts/1.140176559529856] HOSTS_BACKENDS_REGISTERED the following host backend types are available: mysql postgresql 
+2023-07-13 14:55:05.712 WARN  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_RESERVATIONS_LOOKUP_FIRST_ENABLED Multi-threading is enabled and host reservations lookup is always performed first.
+2023-07-13 14:55:05.712 INFO  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_CFGMGR_NEW_SUBNET6 a new subnet has been added to configuration: 2001:db8:1::/64 with params: t1=900, t2=1800, preferred-lifetime=3600, valid-lifetime=6000, rapid-commit is false
+2023-07-13 14:55:05.712 INFO  [kea-dhcp6.commands/1.140176559529856] COMMAND_ACCEPTOR_START Starting to accept connections via unix domain socket bound to /kea/sockets/dhcp6.socket
+2023-07-13 14:55:05.712 INFO  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_CONFIG_COMPLETE DHCPv6 server has completed configuration: added IPv6 subnets: 1; DDNS: disabled
+2023-07-13 14:55:05.713 INFO  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_MEMFILE_DB opening memory file lease database: lfc-interval=3600 name=/kea/leases/dhcp6.csv type=memfile universe=6
+2023-07-13 14:55:05.713 INFO  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /kea/leases/dhcp6.csv
+2023-07-13 14:55:05.713 INFO  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_MEMFILE_LFC_SETUP setting up the Lease File Cleanup interval to 3600 sec
+2023-07-13 14:55:05.713 INFO  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_USING_SERVERID server is using server-id 00:01:00:01:2c:42:cc:c9:00:50:56:9d:05:55 and stores in the file /usr/local/var/lib/kea/kea-dhcp6-serverid
+2023-07-13 14:55:05.714 WARN  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface docker0 is not running
+2023-07-13 14:55:05.714 WARN  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface br-8a6fe04f526d is not running
+2023-07-13 14:55:05.714 WARN  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface vetha7071ac is down
+2023-07-13 14:55:05.714 WARN  [kea-dhcp6.dhcpsrv/1.140176559529856] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface veth0f524ab is not running
+2023-07-13 14:55:05.714 INFO  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_OPEN_SOCKETS_FAILED maximum number of open service sockets attempts: 0, has been exhausted without success
+2023-07-13 14:55:05.714 WARN  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_MULTI_THREADING_INFO enabled: yes, number of threads: 4, queue size: 600
+2023-07-13 14:55:05.715 INFO  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_STARTED Kea DHCPv6 server version 2.2.0 started
+2023-07-13 14:57:20.291 INFO  [kea-dhcp6.dhcp6/1.140176559529856] DHCP6_SHUTDOWN server shutdown

@@ -3,7 +3,7 @@ version: '3.4'
 services:
   kea-dhcpd:
     container_name: kea-dhcpd
-    command: kea-admin db-init mysql -u root -p kea_db_pass  -h db -n kea 
+    command: kea-admin db-init mysql -u root -p mypass  -h db -n kea 
     image: rkojedzinszky/kea:2.2.0
     
     networks:
