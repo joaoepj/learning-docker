@@ -2,7 +2,7 @@
 
 By exploring [jonasal](https://hub.docker.com/u/jonasal) Kea related Docker images I could run a Kea 2.2.0 service and interact with its REST API throughth [Insomnia](https://insomnia.rest/products/insomnia).
 
-In summary, getting information from server's configuration works fine. But setting server's configurion has no effect at all, although server's API response inform success.
+In summary, getting information from server's configuration works fine. But setting server's configuration has no effect at all, although server's API response inform success.
 
 Let's see some examples:
 
@@ -34,7 +34,7 @@ curl -s -X POST -H "Content-Type: application/json" -d '{ "command": "status-get
 ]
 ```
 
-#### A unsuccessfull case:
+#### An unsuccessfull case:
 
 In fact, this case not even try to write into server's configuration, it only asks for server's leases. The "command not supported" response leads to another concept, Hook Library, understood as libraries that allows server extension.
 
@@ -47,4 +47,11 @@ curl -s -X POST -H "Content-Type: application/json" -d '{ "command": "lease4-get
     "text": "'lease4-get-all' command not supported."
   }
 ]
+```
+
+#### Another unsuccessfull case:
+
+I would write that even after I successfuly sent a configurtion through config-set including instructions to load the Lease Hook Library, server could'nt reckognize lease4-get-all or lease4-add commands. But then it magically worked.
+```
+
 ```

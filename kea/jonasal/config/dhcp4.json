@@ -87,6 +87,14 @@
         "renew-timer": 900,
         "rebind-timer": 1800,
 
+        // Added by Joao E Pereira Jr
+        "hooks-libraries": [
+            {
+                "library": "/usr/local/lib/kea/hooks/libdhcp_lease_cmds.so"
+            }
+        ],
+
+
         // You can include a separate JSON file which will be placed inline with
         // the code here. This allows us to split this section into its own file
         // which makes this one easier to read.
