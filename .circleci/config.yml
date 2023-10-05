@@ -15,10 +15,10 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-       - run:
+      - run:
           name: "What directory is it?"
           command: "pwd"
-       - run:
+      - run:
           name =: "Show its contents"   
           command: "ls -l"
 
