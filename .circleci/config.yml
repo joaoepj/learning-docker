@@ -5,32 +5,22 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  build-and-run:
+  master-test:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
       - image: cimg/base:stable
-    resource_class: small 
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
       - run:
-          name: "What directory is it?"
-          command: "pwd"
-      - run:    
-          name: "Show its contents"
-          command: "ls -l kea"
-      - run:
-          name: "Dive inside"
-          command: "cd /home/circleci/project"
-      - run:
-          name: "Building learning-docker"
-          command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
+          name: "Say hello"
+          command: "echo Hello, World!"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  ld-workflow:
+  say-hello-workflow:
     jobs:
-      - build-and-run
+      - master-test
