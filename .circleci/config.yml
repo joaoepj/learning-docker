@@ -20,10 +20,10 @@ jobs:
           command: "pwd"
       - run:
           name: "Show its contents"   
-          command: "ls -l"
+          command: "ls -l kea"
       - run:
           name: "Is docker running?"   
-          command: "systemctl status docker.service"
+          command: "dockerd"
       - run:
           name: "Building learning-docker"
           command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
