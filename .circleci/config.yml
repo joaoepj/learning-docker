@@ -19,7 +19,7 @@ jobs:
           command: "pwd"
       - run:    
           name: "Show its contents"
-          command: "ls -l"
+          command: "ls -l kea"
       - run:
           name: "Dive inside"
           command: "cd /home/circleci/project"
