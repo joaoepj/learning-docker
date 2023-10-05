@@ -10,13 +10,16 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
       - image: cimg/base:stable
+    resource_class: small
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
        - run:
-          name: "Searching code"
+          name: "What directory is it?"
           command: "pwd"
+       - run:
+          name =: "Show its contents"   
           command: "ls -l"
 
       - run:
