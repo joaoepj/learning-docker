@@ -14,6 +14,11 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
+       - run:
+          name: "Searching code"
+          command: "pwd"
+          command: "ls -l"
+
       - run:
           name: "Building learning-docker"
           command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
