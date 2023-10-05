@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/joaoepj/learning-docker/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/joaoepj/learning-docker/tree/master)
+![CircleCI](https://img.shields.io/circleci/build/gh/joaoepj/learning-docker)
 
 # Learning Docker
 
