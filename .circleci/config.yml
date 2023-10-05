@@ -21,6 +21,9 @@ jobs:
           name: "Show its contents"
           command: "ls -l"
       - run:
+          name: "Dive inside"
+          command: "cd /home/circleci/project"
+      - run:
           name: "Building learning-docker"
           command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
 
