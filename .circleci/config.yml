@@ -19,9 +19,11 @@ jobs:
           name: "What directory is it?"
           command: "pwd"
       - run:
-          name =: "Show its contents"   
+          name: "Show its contents"   
           command: "ls -l"
-
+      - run:
+          name: "Is docker running?"   
+          command: "systemctl status docker.service"
       - run:
           name: "Building learning-docker"
           command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
