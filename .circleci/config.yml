@@ -23,7 +23,7 @@ jobs:
           command: "ls -l kea"
       - run:
           name: "Is docker running?"   
-          command: "dockerd"
+          command: "sudo dockerd"
       - run:
           name: "Building learning-docker"
           command: "docker build --progress=plain kea/joaoepj/ -t joaoepj/kea-dhcp:1"
