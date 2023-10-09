@@ -1,8 +1,9 @@
 version: '3.4'
 
 services:
-  httpproxy:
-    image: httpproxy
+  node-http-proxy:
+    image: joaoepj/node-http-proxy
+    container_name: node-http-proxy
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -11,7 +12,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 3000:3000
+      - 7000:7000
 
 networks:
   devnet:

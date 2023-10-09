@@ -1,14 +1,15 @@
 version: '3.4'
 
 services:
-  httpproxy:
-    image: httpproxy
+  node-http-proxy:
+    image: joaoepj/node-http-proxy
+    container_name: node-http-proxy-debug
     build:
       context: node-http-proxy
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: development
     ports:
-      - 3000:3000
+      - 7000:7000
       - 9229:9229
     command: ["node", "--inspect=0.0.0.0:9229", "index.js"]
