@@ -1,5 +1,5 @@
 # docker build --progress=plain --no-cache kea/joaoepj/ -t joaoepj/kea-dhcp:1
-FROM opensuse/leap
+FROM opensuse/leap AS build
 RUN zypper in -y curl tar gzip iputils
 RUN zypper in -y gcc-c++ make autoconf automake libtool pkgconf  
 RUN zypper in -y boost_1_75_0-*devel \
@@ -13,11 +13,12 @@ RUN zypper in -y boost_1_75_0-*devel \
 RUN curl https://dl.cloudsmith.io/public/isc/kea-2-4/raw/versions/2.4.0/kea-2.4.0.tar.gz -o kea-2.4.0.tar.gz
 RUN tar xzvf kea-2.4.0.tar.gz
 RUN cd kea-2.4.0
-#RUN ./configure \
-#    --with-mysql \
+RUN ./configure \
+    --with-mysql \
 #    --with-pgsql \
-#    --with-libyang \
+    --with-libyang \
 #    --with-sysrepo \
-#    --with-boost-include=/usr/lib/hpc/gnu7/boost/1.75.0/include/
-#RUN make -j 6
+    --with-boost-include=/usr/lib/hpc/gnu7/boost/1.75.0/include/
+RUN make -j 6
+RUN make install
 #ENTRYPOINT [ "bash" ]
