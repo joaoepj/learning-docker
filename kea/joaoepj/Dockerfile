@@ -13,6 +13,6 @@ RUN cd kea-2.4.0 && ./configure \
     --with-pgsql  
 #    --with-libyang=/usr/lib64 \
 #    --with-boost-include=/usr/lib/hpc/gnu7/boost/1.75.0/include
-RUN make -j $(nproc)
+RUN make -j 6
 RUN make install
 #ENTRYPOINT [ "bash" ]
