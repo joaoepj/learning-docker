@@ -8,11 +8,12 @@ RUN zypper in -y curl tar gzip iputils \
     postgresql15-devel postgresql15-server-devel 
 RUN curl https://dl.cloudsmith.io/public/isc/kea-2-4/raw/versions/2.4.0/kea-2.4.0.tar.gz \
     -o kea-2.4.0.tar.gz && tar xzvf kea-2.4.0.tar.gz
-RUN cd kea-2.4.0 && ./configure \
+WORKDIR /kea-2.4.0
+RUN ./configure \
     --with-mysql \
     --with-pgsql  
 #    --with-libyang=/usr/lib64 \
 #    --with-boost-include=/usr/lib/hpc/gnu7/boost/1.75.0/include
-RUN cd kea-2.4.0 && make -j 6
-RUN cd kea-2.4.0 && make install
+RUN make -j ${nproc}
+RUN make install
 #ENTRYPOINT [ "bash" ]
