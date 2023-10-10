@@ -1,6 +1,6 @@
 # docker build --progress=plain --no-cache kea/joaoepj/ -t joaoepj/kea-dhcp:1
 FROM opensuse/leap AS build
-RUN zypper in -y curl tar gzip iputils \
+RUN zypper in -y curl tar gzip iputils vim iproute2 \
     gcc-c++ make autoconf automake libtool pkgconf \  
     boost_1_75_0-*devel libboost_system1_75_0 \
     libboost_*75* libopenssl-devel log4cplus-devel \
