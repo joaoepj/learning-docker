@@ -16,6 +16,6 @@ RUN ./configure \
 #    --with-boost-include=/usr/lib/hpc/gnu7/boost/1.75.0/include
 # exceeds paralelism limits in circleci
 #RUN make -j ${nproc}
-RUN make -j 25
+RUN make -j 15
 RUN make install && ldconfig
 #ENTRYPOINT [ "bash" ]
