@@ -20,4 +20,7 @@ RUN ./configure \
 RUN make -j 6
 RUN make install && ldconfig
 EXPOSE 8000 67/udp
+RUN mkdir -p /home/ext_kea_conf
+VOLUME /home/ext_kea_conf
+RUN sed -i 's/"http-host": "127.0.0.1"/"http-host": "0.0.0.0"/' /usr/local/etc/kea/kea-ctrl-agent.conf
 #ENTRYPOINT [ "bash" ]
