@@ -5,7 +5,8 @@ RUN zypper in -y curl tar gzip iputils vim iproute2 \
     boost_1_75_0-*devel libboost_system1_75_0 \
     libboost_*75* libopenssl-devel log4cplus-devel \
     libyang2 libyang-devel libmysqld-devel \
-    postgresql15-devel postgresql15-server-devel 
+    postgresql15-devel postgresql15-server-devel \
+    dhcp-tools dhcp-client
 RUN curl https://dl.cloudsmith.io/public/isc/kea-2-4/raw/versions/2.4.0/kea-2.4.0.tar.gz \
     -o kea-2.4.0.tar.gz && tar xzvf kea-2.4.0.tar.gz
 WORKDIR /kea-2.4.0
@@ -18,4 +19,5 @@ RUN ./configure \
 #RUN make -j ${nproc}
 RUN make -j 6
 RUN make install && ldconfig
+EXPOSE 8000 67/udp
 #ENTRYPOINT [ "bash" ]
