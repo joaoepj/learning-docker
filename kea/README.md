@@ -1,8 +1,17 @@
 # Kea DHCP Server
 
-By exploring [jonasal](https://hub.docker.com/u/jonasal) Kea related Docker images I could run a Kea 2.2.0 service and interact with its REST API throughth [Insomnia](https://insomnia.rest/products/insomnia).
+By exploring [jonasal](https://hub.docker.com/u/jonasal) Kea related Docker images I could run a Kea 2.2.0 service and interact with its REST API throughth [Insomnia](https://insomnia.rest/products/insomnia). Then it evolved to package my own Kea DHCP Server Docker image running version 2.4.0. Use the docker image tagged as latest or 1.
 
-In summary, getting information from server's configuration works fine. But setting server's configuration has no effect at all, although server's API response inform success.
+## Copy configuration file
+
+```
+docker cp ../learning-docker/kea/joaoepj/kea-dhcp4.conf jovial_kirch:/usr/local/etc/kea
+```
+## Start Kea DHCP Server Services
+```
+keactrl start
+```
+
 
 Let's see some examples:
 
