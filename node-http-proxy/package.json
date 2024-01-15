@@ -2,13 +2,20 @@
   "name": "http-proxy",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "express-index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "myrun": "nodemon express-index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-http-proxy": "^2.0.0",
     "http-proxy": "^1.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
