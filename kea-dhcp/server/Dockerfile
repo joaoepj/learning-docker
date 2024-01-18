@@ -24,5 +24,7 @@ RUN mkdir -p /home/ext_kea_conf
 VOLUME /home/ext_kea_conf
 RUN sed -i 's/"http-host": "127.0.0.1"/"http-host": "0.0.0.0"/' /usr/local/etc/kea/kea-ctrl-agent.conf
 COPY kea-dhcp4.conf /usr/local/etc/kea
-#ENTRYPOINT ["keactrl"]
-#CMD ["start"]
+COPY my_wrapper_script.sh my_wrapper_script.sh
+RUN chmod a+x my_wrapper_script.sh
+#ENTRYPOINT /usr/local/sbin/kea-ctrl-agent -c /usr/local/etc/kea/kea-ctrl-agent.conf
+CMD ./my_wrapper_script.sh
