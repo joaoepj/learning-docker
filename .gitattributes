@@ -1,0 +1,2 @@
+# Fix mariadb files marked as Visual Basic 6.0 in project language stats
+*.frm linguist-generated
