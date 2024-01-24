@@ -18,7 +18,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: "Building learning-docker"
-          command: "docker build --progress=plain --no-cache kea/joaoepj/ -t joaoepj/kea-dhcp:1"
+          command: "docker build --progress=plain --no-cache kea-dhcp/server/ -t joaoepj/kea-dhcp:1"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
