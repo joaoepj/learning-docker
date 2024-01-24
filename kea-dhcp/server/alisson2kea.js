@@ -4,6 +4,7 @@
 var transform = require("node-json-transform").transform;
 var fs = require("fs");
 const { http } = require("http");
+var Netmask = require("netmask").Netmask;
 
 if (process.argv.length < 3) {
     console.error('Expected at least one argument!');
@@ -37,15 +38,16 @@ var Subnet4Map = {
 
 var SubnetsMap = {
     item: {
-        subnet: "id",
-
+        subnet: {
+            net: "id",
+            mask: "netmask"
+        },
         "option-data": "options",
         domain: "domain",
-        netmask: "netmask",
         pools: "ip-range",
         reservations: "reserved-address"
     },
-    remove: ["domain", "netmask"],
+    remove: ["domain"],
     operate: [
        {
         run: function(val) { return  transform(val, ReservationsMap)}, on: "reservations" 
@@ -55,6 +57,11 @@ var SubnetsMap = {
        },
        {
         run: function(val) { return  transform(val, PoolsMap)}, on: "pools" 
+       },
+       {
+        run: function(val) {
+             let block = new Netmask(val.net + '/' + val.mask);
+             return block.base + '/' + block.bitmask}, on: "subnet" 
        }       
 
     ],
