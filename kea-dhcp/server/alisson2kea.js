@@ -6,8 +6,8 @@ var fs = require("fs");
 const { http } = require("http");
 
 
-//let rawdata = fs.readFileSync("/root/first-subnet-dhcpapi.json");
-let rawdata = fs.readFileSync("/root/dhcpapi.json");
+let rawdata = fs.readFileSync("/root/first-subnet-dhcpapi.json");
+//let rawdata = fs.readFileSync("/root/dhcpapi.json");
 let alisson = JSON.parse(rawdata);
 
 
@@ -31,27 +31,24 @@ var Subnet4Map = {
 var SubnetsMap = {
     item: {
         subnet: "id",
-        iprange:  {
-                startip: "ip-range.0.start-ip",
-                endip: "ip-range.0.end-ip",
-            },
+
         options: "options",
         domain: "domain",
         netmask: "netmask",
-        pool: "pool",
+        pools: "ip-range",
         reservations: "reserved-address"
     },
     remove: ["domain"],
     operate: [
        {
-          run: function(val) { return  val.startip + '-' + val.endip}, on: "iprange" 
-       },
-       {
         run: function(val) { return  transform(val, ReservationsMap)}, on: "reservations" 
        },
        {
         run: function(val) { return  transform(val, OptionsMap)}, on: "options" 
-       },       
+       },
+       {
+        run: function(val) { return  transform(val, PoolsMap)}, on: "pools" 
+       }       
 
     ],
     each: function(item){
@@ -79,8 +76,16 @@ var OptionsMap = {
 
 var PoolsMap = {
     item: {
-        iprange: "iprange"
-    }
+        pool: {
+            startip: "start-ip",
+            endip: "end-ip",
+        }
+    },
+    operate: [
+        {
+            run: function(val) { return val.startip + '-' + val.endip}, on: "pool" 
+        }
+    ]
 }
 
 
