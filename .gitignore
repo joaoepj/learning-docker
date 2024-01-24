@@ -1,4 +1,8 @@
-kea/jonasal/logs
+kea-dhcp/server/alisson2kea.json
+kea-dhcp/server/node_modules/
+kea-dhcp/server/package-lock.json
+kea-dhcp/server/package.json
+kea-dhcp/server/ufu-kea-dhcp4.conf
 mariadb/aria_log.00000001
 mariadb/aria_log_control
 mariadb/coredns/
