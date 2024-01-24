@@ -5,18 +5,25 @@ var transform = require("node-json-transform").transform;
 var fs = require("fs");
 const { http } = require("http");
 
+if (process.argv.length < 3) {
+    console.error('Expected at least one argument!');
+    process.exit(1);
+  }
+  
 
-let rawdata = fs.readFileSync("/root/first-subnet-dhcpapi.json");
-//let rawdata = fs.readFileSync("/root/dhcpapi.json");
+if (fs.existsSync(process.argv[2])) {
+    var rawdata = fs.readFileSync(process.argv[2]);
+} else {
+    console.error(process.argv[2] + '. File not found!');
+    process.exit(1);
+}
+
 let alisson = JSON.parse(rawdata);
 
 
 var Subnet4Map = {
     item: {
     subnet4: "results",
-    },
-    defaults: {
-        loggers: "/root/logs.log"
     },
     operate: [
         {
@@ -32,19 +39,19 @@ var SubnetsMap = {
     item: {
         subnet: "id",
 
-        options: "options",
+        "option-data": "options",
         domain: "domain",
         netmask: "netmask",
         pools: "ip-range",
         reservations: "reserved-address"
     },
-    remove: ["domain"],
+    remove: ["domain", "netmask"],
     operate: [
        {
         run: function(val) { return  transform(val, ReservationsMap)}, on: "reservations" 
        },
        {
-        run: function(val) { return  transform(val, OptionsMap)}, on: "options" 
+        run: function(val) { return  transform(val, OptionsMap)}, on: "option-data" 
        },
        {
         run: function(val) { return  transform(val, PoolsMap)}, on: "pools" 
@@ -58,7 +65,9 @@ var SubnetsMap = {
 
 var ReservationsMap = {
     item: {
-        description: "description",
+        "user-context": {
+            description: "description",
+        },
         "hw-address": "mac",
         "ip-address": "ip"
     },
@@ -69,8 +78,8 @@ var ReservationsMap = {
 
 var OptionsMap = {
     item: {
-        option: "id",
-        value: "ip"
+        code: "id",
+        data: "ip",
     }
 }
 
