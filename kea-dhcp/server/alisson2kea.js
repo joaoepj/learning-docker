@@ -3,7 +3,6 @@
 // project directory
 var transform = require("node-json-transform").transform;
 var fs = require("fs");
-const { http } = require("http");
 var Netmask = require("netmask").Netmask;
 var netid = 1;
 
@@ -43,7 +42,10 @@ var SubnetsMap = {
             net: "id",
             mask: "netmask"
         },
-        "option-data": "options",
+        "client-class": {
+            code: "options.0.id",
+            data: "options.0.ip",
+        },
         domain: "domain",
         pools: "ip-range",
         reservations: "reserved-address"
@@ -54,16 +56,25 @@ var SubnetsMap = {
         run: function(val) { return  transform(val, ReservationsMap)}, on: "reservations" 
        },
        {
-        run: function(val) { return  transform(val, OptionsMap)}, on: "option-data" 
-       },
-       {
         run: function(val) { return  transform(val, PoolsMap)}, on: "pools" 
        },
        {
         run: function(val) {
              let block = new Netmask(val.net + '/' + val.mask);
              return block.base + '/' + block.bitmask}, on: "subnet" 
-       }       
+       },
+       {
+        run: function(val) {
+            switch (val.data) {
+                case "200.131.199.134":
+                    return "sm-aruba-ap";
+                case "200.131.199.130":
+                    return "um-aruba-ap";
+                default:
+                    return "";
+            }
+        }, on: "client-class"
+    }
 
     ],
     each: function(item){
@@ -86,12 +97,7 @@ var ReservationsMap = {
     }
 }
 
-var OptionsMap = {
-    item: {
-        code: "id",
-        data: "ip",
-    }
-}
+
 
 var PoolsMap = {
     item: {
