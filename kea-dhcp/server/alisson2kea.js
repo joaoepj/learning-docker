@@ -5,6 +5,7 @@ var transform = require("node-json-transform").transform;
 var fs = require("fs");
 const { http } = require("http");
 var Netmask = require("netmask").Netmask;
+var netid = 1;
 
 if (process.argv.length < 3) {
     console.error('Expected at least one argument!');
@@ -66,6 +67,8 @@ var SubnetsMap = {
 
     ],
     each: function(item){
+        item.id = netid;
+        netid++;
         return item; 
     }
 }
